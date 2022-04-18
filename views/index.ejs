@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <%- include('./partials/head'); %>
+        <link rel="stylesheet" href="./css/main.min.css">
+    </head>
+    <body class="d-flex flex-column">
+        <%- include('./partials/navbar'); %>
+        
+        <main class="container" style="margin-top: 60px; max-width: 900px;">
+            <div id="calendar"></div>
+        </main>
+
+    </body>
+    <footer class="fixed-bottom">
+        <%- include('./partials/footer'); %>
+        <script src="./js/main.min.js"></script>
+        <script>
+            const element = document.getElementById("calendar");
+            const calendar = new FullCalendar.Calendar(element, {
+                initialView: 'dayGridMonth',
+                locale: 'pt-br',
+                events: 'calendar',
+                eventClick: showDetails
+            });
+            calendar.render();
+    
+            function showDetails(info){
+                console.log(info.event.title);
+                window.location.href = `/event/${info.event.id}`;
+            }
+        </script>
+    </footer>
+
+</html>

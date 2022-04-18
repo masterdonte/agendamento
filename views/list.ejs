@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <%- include('./partials/head'); %>
+    </head>
+    <body class="d-flex flex-column">
+        <%- include('./partials/navbar'); %>
+
+        <main class="container" style="margin-top: 70px; max-width: 1000px;">
+            <div class="card">
+                <h4 class="card-header">Consulta apontamento</h4>
+                <div class="card-body">
+                    <form action="/list" method="get">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <input type="text" class="form-control" name="search" value="<%=search%>" type="search" placeholder="E-mail ou CPF" aria-describedby="basic-addon2">
+                            </div>
+                            <div class="col-md-2">
+                                <button class="form-control btn btn-primary" type="submit">Pesquisar</button>
+                            </div>                                                             
+                        </div>
+                    </form>
+                </div>
+
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">CPF</th>
+                            <th scope="col">E-MAIL</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                            <% appos.forEach(appo => { %>
+                                <tr>
+                                    <th scope="row"><%= appo._id %></th>
+                                    <td><%=appo.name %></td>
+                                    <td><%=appo.cpf %></td>
+                                    <td><%=appo.email %></td>
+                                </tr>
+                            <% }); %>                         
+                        </tbody>
+                      </table>
+                </div>
+            </div>           
+        </main>
+    </body>
+
+    <footer class="fixed-bottom">
+        <%- include('./partials/footer'); %>
+    </footer>
+</html>
+
+    
+

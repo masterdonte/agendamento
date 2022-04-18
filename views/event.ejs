@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <%- include('./partials/head'); %>
+    </head>
+    <body class="d-flex flex-column">
+        <%- include('./partials/navbar'); %>
+        
+        <main class="container" style="margin-top: 70px; max-width: 900px;">
+            <div class="card">
+                <h4 class="card-header">Detalhes da Consulta</h4>
+                <div class="card-body">
+                  <h5 class="card-title">Paciente : <%=appo.name %></h5>
+                  <h5 class="card-title">Email : <%=appo.email %></h5>
+                  <h5 class="card-title">CPF : <%=appo.cpf %></h5>                  
+                  <% if(appo.finished == false) { %>
+                        <form action="/finish" method="post">
+                            <input type="hidden" name="id" value="<%= appo._id %>">
+                            <button type="submit" class="btn btn-primary">Finalizar</button>
+                        </form>
+                  <% } %>                  
+                </div>
+            </div>           
+        </main>
+
+    </body>
+    <footer class="fixed-bottom">
+        <%- include('./partials/footer'); %>       
+    </footer>
+
+</html>
